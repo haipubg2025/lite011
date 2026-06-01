@@ -436,7 +436,7 @@ export default function CharacterModal({ type, npcIndex, onClose }: CharacterMod
     { label: 'Danh xưng', field: 'titles' },
     { label: 'Nghề nghiệp', field: 'occupation' },
     { label: 'Cấp bậc', field: 'rank' },
-    ...(type === 'npc' ? [{ label: 'Vai trò', field: 'role' }, { label: 'Quan hệ với MC', field: 'relation' }] : [])
+    ...(type === 'npc' ? [{ label: 'Vai trò', field: 'role' }] : [])
   ];
 
   const submitUrl = () => {

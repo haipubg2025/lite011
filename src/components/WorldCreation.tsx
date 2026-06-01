@@ -152,7 +152,7 @@ Dưới đây là các thông tin người chơi ĐÃ ĐIỀN (hãy giữ nguyê
 Dữ liệu trả về PHẢI là một object JSON duy nhất với cấu trúc chính xác sau:
 {
   "worldData": { 
-    "name": "Tên thế giới", 
+    "name": "Tên của câu chuyện / Tên tựa game (Tuyệt đối không phải tên lục địa/hành tinh/vũ trụ trong game)", 
     "background": "Bối cảnh thế giới chi tiết", 
     "starterTimeline": "Mốc thời gian mở đầu cụ thể", 
     "starterScenario": "Kịch bản mở đầu lôi cuốn", 
@@ -185,7 +185,7 @@ Dữ liệu trả về PHẢI là một object JSON duy nhất với cấu trúc
     "rank": "Cấu trúc Cảnh giới hoặc Chỉ số", 
     "height": "Chiều cao", 
     "weight": "Cân nặng", 
-    "measurements": "Số đo 3 vòng (Nữ) / Thể hình (Nam)", 
+    "measurements": "Số đo 3 vòng (Chỉ ghi số, VD: 90-60-90 (Cup D). Cấm ghi dài dòng) / Thể hình (Nam)", 
     "appearance": "Miêu tả ngoại hình bẩm sinh", 
     "distinguishingFeatures": "Đặc trưng nhận diện phụ", 
     "powers": [{"name": "Tên năng lực/sức mạnh", "description": "Mô tả chi tiết năng lực", "type": "Loại năng lực", "level": "Cấp độ (nếu có)"}], 
@@ -214,7 +214,6 @@ Dữ liệu trả về PHẢI là một object JSON duy nhất với cấu trúc
     "titles": "Danh xưng, Tước hiệu", 
     "occupation": "Chức vụ, Vai trò", 
     "role": "Vai trò (Vd: Kẻ Địch, Hỗ trợ)",
-    "relation": "Mối quan hệ HIỆN TẠI với MC (Quen/Chưa Quen, TUYỆT ĐỐI CẤM SPOIL quan hệ tương lai)",
     "background": "Lai lịch (lồng ghép binh khí, đan dược nếu có). CẤM SPOIL CỐT TRUYỆN MỚI!",
     "gender": "Giới tính", 
     "age": "Tuổi tác", 
@@ -222,7 +221,7 @@ Dữ liệu trả về PHẢI là một object JSON duy nhất với cấu trúc
     "rank": "Cảnh giới, Cấp độ", 
     "height": "Chiều cao", 
     "weight": "Cân nặng", 
-    "measurements": "Số đo hình thể", 
+    "measurements": "Số đo 3 vòng (Chỉ ghi số, VD: 90-60-90 (Cup D). Cấm ghi dài dòng) / Thể hình (Nam)", 
     "appearance": "Miêu tả ngoại hình tổng quan (vô cùng chi tiết với nữ giới)", 
     "powers": [{"name": "Tên năng lực/sức mạnh", "description": "Mô tả chi tiết năng lực", "type": "Loại năng lực", "level": "Cấp độ (nếu có)"}], 
     "skills": [{"name": "Tên kỹ năng", "description": "Mô tả chi tiết", "type": "Loại kỹ năng", "level": "Độ thuần thục"}], 
@@ -719,10 +718,10 @@ Hãy trình bày một cách cuốn hút và logic. BẮT BUỘC TRẢ LỜI VÀ
                   <div className="space-y-8">
                     <section className="space-y-4">
                       <CharacterTextArea 
-                        label="TÊN THẾ GIỚI"
+                        label="TÊN TRÒ CHƠI / TÊN CÂU CHUYỆN"
                         value={worldData.name}
                         onChange={(val) => setWorldData({...worldData, name: val})}
-                        placeholder="Nhập tên vùng đất..."
+                        placeholder="Nhập tên trò chơi..."
                         variant="title"
                       />
                     </section>
@@ -1142,7 +1141,6 @@ Hãy trình bày một cách cuốn hút và logic. BẮT BUỘC TRẢ LỜI VÀ
                                 <CharacterInput label="TUỔI TÁC" value={npc.age} onChange={(val) => { const n = [...npcs]; n[idx] = { ...n[idx], age: val }; setNpcs(n); }} />
                                 <CharacterInput label="NGÀY THÁNG NĂM SINH" value={npc.dob} onChange={(val) => { const n = [...npcs]; n[idx] = { ...n[idx], dob: val }; setNpcs(n); }} />
                                 <CharacterInput label="CẢNH GIỚI / CẤP ĐỘ" value={npc.rank} onChange={(val) => { const n = [...npcs]; n[idx] = { ...n[idx], rank: val }; setNpcs(n); }} />
-                                <CharacterInput label="QUAN HỆ VỚI MC" value={npc.relation} onChange={(val) => { const n = [...npcs]; n[idx] = { ...n[idx], relation: val }; setNpcs(n); }} />
                              </div>
                           </div>
 
@@ -1215,7 +1213,7 @@ Hãy trình bày một cách cuốn hút và logic. BẮT BUỘC TRẢ LỜI VÀ
                   ))}
                   <button 
                     onClick={() => setNpcs([...npcs, { 
-                      name: '', fullName: '', titles: '', occupation: '', gender: '', age: '', dob: '', height: '', weight: '', measurements: '', appearance: '', background: '', rank: '', powers: [], skills: [], role: '', relation: '', personality: '', personalityCore: '', philosophy: '', distinguishingFeatures: '', innerSecret: '', relationships: [], loveViews: '', experience: '', nsfwPersonality: '', nsfwReactions: '', literaryDescription: '', goal: ''
+                      name: '', fullName: '', titles: '', occupation: '', gender: '', age: '', dob: '', height: '', weight: '', measurements: '', appearance: '', background: '', rank: '', powers: [], skills: [], role: '', personality: '', personalityCore: '', philosophy: '', distinguishingFeatures: '', innerSecret: '', relationships: [], loveViews: '', experience: '', nsfwPersonality: '', nsfwReactions: '', literaryDescription: '', goal: ''
                     }])}
                     className="w-full py-8 rounded-[2rem] border-2 border-dashed border-white/10 hover:border-white/30 hover:bg-white/5 transition-all flex items-center justify-center gap-3 text-white/50 hover:text-white cursor-pointer group"
                   >

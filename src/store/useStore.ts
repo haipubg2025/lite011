@@ -120,7 +120,6 @@ interface GameState {
       powers: Array<{ name: string; description: string; type?: string; level?: string }>;
       skills: Array<{ name: string; description: string; type?: string; level?: string }>;
       role: string; 
-      relation: string;
       personality: string;
       personalityCore: string;
       philosophy: string;
@@ -261,7 +260,6 @@ const INITIAL_WORLD_CREATION = {
     powers: [],
     skills: [],
     role: '', 
-    relation: '',
     personality: '',
     personalityCore: '',
     philosophy: '',
